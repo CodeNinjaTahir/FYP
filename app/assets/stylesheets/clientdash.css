@@ -1,0 +1,35 @@
+.tnavbar {
+    width: 100vw;
+    height: 10vh;
+    background-color: rgb(2, 87, 124);
+    /* background-color: rgb(92, 179, 196); */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px 30px 0px 30px;
+    border: 1px solid black;
+    position: fixed;
+    z-index: 1000;
+}
+
+.title {
+    color: white;
+    font-family: 'Brush Script MT', cursive;
+    justify-content: center;
+    margin: 5px 0px 0px 20px;
+    font-size: 40px;
+    align-items: center;
+    text-shadow: 1px 1px;
+}
+
+.logout-btn {
+    color: white;
+    text-decoration: none;
+    margin-right: 15px;
+}
+
+.tlogo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

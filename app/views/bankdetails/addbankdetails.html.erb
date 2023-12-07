@@ -1,0 +1,96 @@
+
+<head>
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+
+
+<body>
+<div class="tnavbar">
+<div class="tlogo">
+  <%= image_tag('1.png', :class => "logoimg") %>
+  <h3 class="title"> Out of Home</h3>
+</div>
+
+<div>
+<% if @user %>
+<%= button_to "Logout" , logout_path,method: :delete %>
+<% end %>  
+</div>
+</div>
+
+
+
+
+
+<div class="dash-content-payment">
+<div class="sidebar">
+        <div class="company-name"><h3>
+        <% if @user %>
+            <%= @user.company_name %>
+        <% end %> 
+
+        </h3></div>
+        <%= link_to "Profile", {}, class:"item2"%>
+        
+        <%= link_to "Add BillBoard", addbillboard_path, class:"item2"%>
+        <%= link_to "Manage BillBoards", showboards_path, class:"item2"%>
+        <%= link_to "Payment Details", {}, class:"item"%>
+
+        <%= link_to "Booking Requests", viewrequest_viewrequests_path, class:"item"%>
+        <div class='item'>Booked BillBoards</div>
+    </div>
+
+
+<div class="col-md-9 offset-md-3 payment-card">
+                <span class="anchor" id="formPayment"></span>
+                <%# <hr class="my-5"> %>
+
+                <!-- form card cc payment -->
+                <div class="card card-outline-secondary">
+                    <div class="card-body">
+                        <h3 class="text-center">Upload Payment Details</h3>
+                        <hr>
+
+                        <%= form_with model: @OwnerBankDetail,url:bankdetails_path, local: true do |form| 
+                            %>
+                            <%= form.hidden_field :owner_id ,:value=>(@owner.id) %>
+                            
+                            <div class="form-group">
+                                <label for="cc_bank">Bank</label>
+                                <%= form.select :bank, ['Allied Bank', 'HBL','MCB','BOP'],{ include_blank: "Select Bank" }, { class: 'form-control' }%>
+                            </div>
+                            <div class="form-group">
+                                <label for="cc_name">Account Name</label>
+                                <%= form.text_field :acc_name ,class: "form-control",required: true,maxlength:"50" %>
+                            </div>
+                            <div class="form-group">
+                                <label>Account Number</label>
+                                <%= form.text_field :acc_number ,class: "form-control",required: true,maxlength:"20" %>
+                            </div>
+
+
+                            
+
+
+                            <hr>
+                            <div class="form-group row">
+                                <div class="col-md-6">
+                                    
+                                    <%= link_to "Back", owner_path,class:"btn btn-default btn-lg btn-block" %>
+                                </div>
+                                <div class="col-md-6">
+                                    <button type="submit" class="btn btn-success btn-lg btn-block">Submit</button>
+                                </div>
+                            </div>
+                        <%end%>
+                    </div>
+                </div>
+
+                            
+
+
+</div>
+</body>
+

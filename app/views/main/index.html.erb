@@ -1,0 +1,56 @@
+<div class="tnavbar">
+<div class="tlogo">
+    <%= image_tag('1.png', :class => "logoimg") %>
+    <h3 class="title"> Out of Home</h3>
+</div>
+
+<div>
+  <% if can?:create, Owner%> 
+    <%= link_to "Login", login_path, class:"home-btn"%>
+  <% end %>  
+    <%= link_to "Signup", register_path, class:"home-btn"%>
+</div>
+</div>
+
+
+<div class="slider" style = "border : 2px solid black">
+<div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
+  <div class="carousel-inner">
+    <div class="carousel-item active ">
+        <%= image_tag('slider1.jpg') %>
+    </div>
+    <div class="carousel-item">
+        <%= image_tag('slider2.jpg') %>
+    </div>
+    <div class="carousel-item">
+        <%= image_tag('slider3.jpg') %>
+    </div>
+  </div>
+</div>
+</div>
+
+
+<div class=" headingtext">
+    <div><h1 class="heading">Bringing you the best of the best.</h1></div>
+    <div><p id="Text">We are always growing to benefit you! Whenever a new location is <br> added to our network, your campaign gets added at no additional <br> charge. When we grow, you grow.</p></div>
+    
+</div>
+
+
+
+<div class="container-fluid imagesContainer">
+    <div class="row">
+        <div class="col colindex">
+            <%= image_tag('image1.jpg') %>
+        </div>
+        <div class="col colindex">
+            <%= image_tag('image2.jpg') %>
+        </div>
+        <div class="col colindex">
+            <%= image_tag('image3.jpg') %>
+        </div>
+    </div>
+</div>
+
+
+

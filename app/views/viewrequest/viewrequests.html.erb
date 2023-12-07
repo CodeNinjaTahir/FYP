@@ -1,0 +1,84 @@
+
+  <div class="tnavbar">
+  <div class="tlogo">
+      <%= image_tag('1.png', :class => "logoimg") %>
+      <h3 class="title"> Out of Home</h3>
+  </div>
+  
+  <div>
+  <% if @user %>
+    <%= button_to "Logout" , logout_path,method: :delete %>
+<% end %>  
+  </div>
+</div>
+  
+  
+<div class="dash-content">
+    <div class="sidebar">
+        <div class="company-name"><h3>
+        <% if @user %>
+            <%= @user.company_name %>
+        <% end %> 
+        </h3>
+        </div>
+
+        <%= link_to "Profile", edit_ownerprofile_path(@user), class:"item2"%>
+        <%= link_to "Add BillBoard", addbillboard_path, class:"item2"%>
+        <%= link_to "Manage BillBoards", showboards_path, class:"item2"%>
+        <div class='item'><b>Booking Requests</b></div>
+        <%= link_to "Booked BillBoards", ownerbooked_path, class:"item2"%>
+        <%= link_to "Payment Details", bankdetails_path, class:"item2"%>
+    </div>
+    <div class='item-data'>
+        <div class='item-viewrequest'>
+            <div class="">
+                <div class="table-responsive">
+                    <div class="table-wrapper">
+                        <div class="table-title">
+                            <div class="row">
+                                <div class="col-sm-8"><h2><b>Booking</b> <b>Requests</b></h2></div>
+                            </div>
+                        </div>
+                        <table class="table table-bordered">
+                            <thead>
+                            <tr>
+                                <th>Requests</th>
+                                <th>Action</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <%@booking_details.each do |detail|%>
+                            
+                            <tr>
+                            <% if detail.content_approved == 1 %>
+                                <td class="t"> <b>
+                                <%=detail.client.company_name%>
+                                </b> requested to book  <b>
+                                <%=detail.board.name%>
+                                </b></td>
+                                <td><%= link_to "View", {:action => "openrequest",  :id=>detail.id} ,class:"btn btn-primary" %></td>
+                            <% end %>
+                            <% if detail.payment_approved == 1 %>
+                                <td class="t"> <b>
+                                <%=detail.client.company_name%>
+                                </b> paid for  <b>
+                                <%=detail.board.name%>
+                                </b></td>
+                                <td><%= link_to "View", {:action => "openpayment",  :id=>detail.id} ,class:"btn btn-primary" %></td>
+                            <% end %>
+                            </tr>
+
+                          
+                            <%end%>
+
+
+                            
+
+                            </tbody>
+                        </table>                       
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

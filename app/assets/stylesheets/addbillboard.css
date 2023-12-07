@@ -1,0 +1,23 @@
+    .addform {
+        width: 60%;
+        height: 80%;
+        /* border: 1px solid black; */
+        display: flex;
+        /* align-items: space-between; */
+        /* justify-content: space-between; */
+    }
+    
+    .add {
+        width: 45%;
+        height: 50px;
+        border-radius: 10px;
+    }
+    
+    .add-input-field {
+        width: 52vw;
+        display: flex;
+        justify-content: space-between;
+        /* border: 1px solid black; */
+        align-items: space-between;
+        margin: 45px 0px 45px 0px;
+    }

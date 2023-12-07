@@ -1,0 +1,93 @@
+.test {
+    height: 100vh;
+    border-top: 1px solid black;
+    margin-top: 50px;
+    background-color: #ffffff;
+}
+
+
+/* .account-nav {
+    width: 100%;
+    height: 500px;
+    border-top: 1px solid black;
+    color: black;
+} */
+
+.logout-btn {
+    display: flex;
+    flex-wrap: wrap;
+    align-content: right;
+}
+
+.sidebar {
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(92, 179, 196);
+    width: 15%;
+    height: 100vh;
+    position: fixed;
+    /* overflow-y: hidden; */
+    text-align: center;
+}
+
+.item {
+    background-color: rgba(2, 87, 124, 0.5);
+    border: 1px solid black;
+    height: 40px;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    cursor: pointer;
+    color: black;
+    padding-left: 10px;
+}
+
+.item2 {
+    background-color: rgba(2, 87, 124, 0.5);
+    border: 1px solid black;
+    height: 40px;
+    text-decoration: none;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    cursor: pointer;
+    padding-left: 10px;
+    text-decoration: none;
+    color: black;
+}
+
+.company-name {
+    height: 10%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.dash-content {
+    display: flex;
+    overflow: hidden;
+    height: 100%;
+    padding-top: 10vh;
+    /* margin-top: 10vh; */
+}
+
+.item-data {
+    height: 90vh;
+    background-color: rgb(153, 216, 221);
+    width: 100%;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-left: 15%;
+}
+
+.item-data-boardimage {
+    height: 90vh;
+    background-color: rgb(153, 216, 221);
+    width: 100%;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

@@ -1,0 +1,10 @@
+.item-data-ownerpayment {
+    height: 100vh;
+    background-color: rgb(153, 216, 221);
+    width: 85%;
+    overflow: hidden;
+    display: flex;
+    justify-content: right;
+    padding-left: 8%;
+    /* align-items: center; */
+}

@@ -1,0 +1,57 @@
+.loginpagerow {
+    height: 700px;
+}
+
+.loginbox {
+    background-color: rgba(19, 94, 104, 0.616);
+    border-radius: 50px;
+}
+
+.img {
+    width: 700px;
+    height: 500px;
+    margin-top: 30px;
+}
+
+.imagebox {
+    align-items: bottom;
+}
+
+.headinglogin {
+    text-align: center;
+    font-weight: bold;
+    margin-top: 80px;
+}
+
+.Login-here {
+    text-align: center;
+    font-weight: bold;
+    margin-top: 30px;
+    font-size: 50px;
+    color: rgb(252, 180, 21);
+}
+
+.login-form {
+    margin-top: 100px;
+    width: 70%;
+    align-items: center;
+    margin-left: 90px;
+}
+
+.login-input {
+    margin-top: 30px;
+}
+
+.login-btn {
+    width: 100%;
+    margin-top: 30px;
+}
+
+.forgot-password {
+    color: white;
+    margin-left: 280px;
+}
+
+.set {
+    padding-top: 15vh;
+}

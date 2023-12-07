@@ -1,0 +1,89 @@
+
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"></script>
+
+
+</head>
+
+<body>
+
+  <div class="tnavbar">
+  <div class="tlogo">
+      <%= image_tag('1.png', :class => "logoimg") %>
+      <h3 class="title"> Out of Home</h3>
+  </div>
+  
+  <div>
+  <% if @user %>
+    <%= button_to "Logout" , logout_path,method: :delete %>
+<% end %>  
+  </div>
+</div>
+  
+  
+<div class="dash-content">
+    <div class="sidebar">
+        <div class="company-name"><h3>
+        
+
+        </h3></div>
+        <div class='item'>Profile</div>
+        <div class='item'>Add BillBoard</div>
+        <div class='item'>Manage BillBoards</div>
+        <div class='item'>Booking Requests</div>
+        <div class='item'>Booked BillBoards</div>
+        <div class='item'><b>Payment Details</b></div>
+    </div>
+
+
+<div class='item-data'>
+    <div class='item-data-profile'>
+
+    <div class="card">
+        <div class="info"> <span>EDIT Payment Details</span> <button id="savebutton">edit</button> </div>
+        <div class="forms">
+            <div class="inputs"> <span>Bank</span> <input id="name" type="text" readonly value=<%=@user.first.bank%>> </div>
+            <div class="inputs"> <span>Account Name</span> <input type="text" id="contact" readonly value=<%=@user.first.acc_name%>> </div>
+            <div class="inputs"> <span>Account Number</span> <input type="text" id="address" readonly value=<%=@user.first.acc_number%>> </div>
+        </div>
+        </div>
+    </div>
+
+</div>
+</div>
+<script>
+
+var savebutton = document.getElementById('savebutton');
+var readonly = true;
+var inputs = document.querySelectorAll('input[type="text"]');
+
+savebutton.addEventListener('click',function(){
+
+    
+for (var i=0; i<inputs.length; i++) 
+    { inputs[i].toggleAttribute('readonly'); };
+     if (savebutton.innerHTML=="edit" ) 
+        { savebutton.innerHTML="save" ;
+        }
+ else { savebutton.innerHTML="edit" ;
+    
+    var name=document.getElementById('name').value;
+    var contact=document.getElementById('contact').value;
+    var address=document.getElementById('address').value;
+    $.post("",
+        {
+            bank: name,
+            acc_name:contact,
+            acc_number:address
+        });   
+}     
+    });
+    
+    
+   
+</script>
+</body>

@@ -1,0 +1,134 @@
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+<link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
+
+</head>
+
+<body>
+<div class="tnavbar">
+<h3 class="title"> Out of Home</h3>
+<div>
+<% if @user %>
+    <%= button_to "Logout" , logout_path,method: :delete %>
+<% end %>  
+</div>
+</div>
+
+
+<div class="">
+    <div class="sidebar-viewbillboards">
+    <div><h3 style="margin:40px">
+    <% if @user %>
+        <%= @user.company_name %>
+      <% end %> 
+    </h3></div>
+
+        
+    <div class='item'>Profile</div>
+    <div class='item'><b>Book Billboard</b></div>
+    <div class='item'>Requests</div>
+    <div class='item'>Booked Billboards</div>
+    </div>
+
+
+<div class="item-data-viewbillboards">
+    <div class='show_billboard'>
+
+        <div class="container-lg">
+    
+    <div class="table-responsive">
+    
+        <div class="table-wrapper">
+
+        <%= form_with do |form|%>
+            <%= form.label :search1, "Search Name : " %>
+            <%= form.text_field :input , {:id => 'search1'}%>
+            <%= form.label :search2, "Search Company : " %>
+            <%= form.text_field :input , {:id => 'search2'}%>
+            <%= form.label :search3, "Search City : " %>
+            <%= form.text_field :input , {:id => 'search3'}%>
+
+         <%end%>
+
+</select>
+
+
+            <div class="table-title">
+                <div class="row">
+                    <div class="col-sm-8"><h2><b>Billboards</b> <b>Details</b></h2></div>
+
+                </div>
+            </div>
+            <table id="dtBasicExample" class="table table-bordered table-sm" cellspacing="0" width="100%">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Company Name</th>
+                        <th>Status</th>
+                        <th>Price</th>
+                        <th>Screen Size</th>
+                        <th>Viewership</th>
+                        <th>Type</th>
+                        <th>Location</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                <% @board.each do |board| %>
+                    <tr>
+                    <td class="border"> <%=board.name %></td>
+                    <td class="border"> <%=board.company_name %></td>
+                    <td class="border"> <%=board.status %></td>
+                    <td class="border"> <%=board.price %></td>
+                    <td class="border"> <%=board.screen_size %></td>
+                    <td class="border"> <%=board.viewership_count %></td>
+                    <td class="border"> <%=board.tpye %></td>
+                    <td class="border"> <%=board.location %></td>
+                 
+                    <td class="border"><%= link_to "Book", book_path(board.id),class: "btn btn-primary btn-user"%></td>
+                    </tr>
+                        <%end%>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+</div>
+</div>
+
+<script>
+var search = document.getElementById('dtBasicExample_filter');
+
+$(document).ready(function () {
+  
+  $('#dtBasicExample').DataTable({sDom: 'lrtip'});
+  $('.dataTables_length').addClass('bs-select');
+
+});
+
+
+var $rows = $('#dtBasicExample tr');
+console.log($rows);
+$('#search1, #search2, #search3').on('input', function() {
+    var val1 = $.trim($('#search1').val()).replace(/ +/g, ' ').toLowerCase();
+    var val2 = $.trim($('#search2').val()).replace(/ +/g, ' ').toLowerCase();
+    var val8 = $.trim($('#search3').val()).replace(/ +/g, ' ').toLowerCase();
+    
+    $rows.show().filter(function() {
+        var text1 = $(this).find('td:nth-child(1)').text().replace(/\s+/g, ' ').toLowerCase();
+        var text2 = $(this).find('td:nth-child(2)').text().replace(/\s+/g, ' ').toLowerCase();
+        var text8 = $(this).find('td:nth-child(8)').text().replace(/\s+/g, ' ').toLowerCase();
+        return !~text1.indexOf(val1) || !~text2.indexOf(val2) || !~text8.indexOf(val8);
+    }).hide();
+});
+
+
+
+</script>
+
+</body>
+
+

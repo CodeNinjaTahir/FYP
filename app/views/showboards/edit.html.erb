@@ -1,0 +1,71 @@
+
+  <div class="tnavbar">
+  <div class="tlogo">
+      <%= image_tag('1.png', :class => "logoimg") %>
+      <h3 class="title"> Out of Home</h3>
+  </div>
+  
+  <div>
+  <% if @user %>
+    <%= button_to "Logout" , logout_path,method: :delete %>
+<% end %>  
+  </div>
+</div>
+  
+  
+<div class="dash-content">
+    <div class="sidebar">
+        <div class="company-name"><h3>
+        
+        <% if @user %>
+            <%= @user.company_name %>
+        <% end %> 
+
+        </h3></div>
+        <div class='item'>Profile</div>
+        <div class='item'>Add BillBoard</div>
+        <div class='item'><b>Manage BillBoards</b></div>
+        <div class='item'>Booking Requests</div>
+        <div class='item'>Booked BillBoards</div>
+        <div class='item'>Payment Details</div>
+    </div>
+    <div class='item-data'>
+            
+        <div class="addform">
+        
+            <%= form_with  do |form| %>
+                <div class="add-input-field">
+                <h1 style="margin-left:30%">Add New Billboard</h1>
+                </div>
+              
+                <div class="add-input-field">
+                <%= form.text_field :name ,class: "add", value:@board.name %>
+                <%= form.text_field :company_name ,class: "add", value:@board.company_name %>
+                </div>
+                <div class="add-input-field">
+                <%= form.text_field :location ,class: "add", value:@board.location %>
+                <%= form.text_field :screen_size ,class: "add", value:@board.screen_size %>
+                </div>
+                <div class="add-input-field">
+                <%= form.text_field :price ,class: "add", value:@board.price %>
+                <%= form.text_field :status ,class: "add", value:@board.status %>
+                </div>
+                <div class="add-input-field">
+                <%= form.text_field :tpye ,class: "add", value:@board.tpye%>
+                <%= form.text_field :viewership_count ,class: "add", value:@board.viewership_count %>
+                </div>
+                
+                <div class="add-input-field">
+                <%= form.submit "Cancel" ,class: " btn btn-primary add"%>
+                <%= form.submit "Update",class: " btn btn-primary add"%>
+                
+                </div>
+
+
+            <% end %>
+        </div>
+    
+    
+    
+    </div>
+</div>

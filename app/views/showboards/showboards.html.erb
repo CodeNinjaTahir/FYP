@@ -1,0 +1,99 @@
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+
+</head>
+<body>
+<div class="tnavbar">
+<h3 class="title"> Out of Home</h3>
+<div>
+<% if @user %>
+    <%= button_to "Logout" , logout_path,method: :delete %>
+<% end %>  
+</div>
+</div>
+
+
+<div class="dash-content">
+    <div class="sidebar">
+        <div class="company-name"><h3>
+        <% if @user %>
+            <%= @user.company_name %>
+        <% end %> 
+
+        </h3></div>
+     
+
+        <%= link_to "Profile", edit_ownerprofile_path(@user), class:"item2"%>
+        <%= link_to "Add BillBoard", addbillboard_path, class:"item2"%>
+        <div class='item'><b>Manage BillBoards</b></div>
+        <%= link_to "Booking Requests", viewrequest_viewrequests_path, class:"item2"%>
+        <%= link_to "Booked BillBoards", ownerbooked_path, class:"item2"%>
+        <%= link_to "Payment Details", bankdetails_path, class:"item2"%>
+
+    </div>
+
+
+<div class='item-data'>
+    <div class='show_billboard'>
+        <div class="container-fluid">
+        <div class="table-responsive">
+        <div class="table-wrapper">
+        <div class="table-title">
+            <div class="row">
+                <div class="col-sm-8"><h2><b>Billboards</b> <b>Details</b></h2></div>
+                <div class="col-sm-4">
+                <%= link_to '<button type="button" class="btn btn-info add-new"><i class="fa fa-plus"></i> Add New</button>'.html_safe, addbillboard_path %>
+                </div>
+                </div>
+            </div>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Company Name</th>
+                        <th>Status</th>
+                        <th>Price</th>
+                        <th>Screen Size</th>
+                        <th>Viewership</th>
+                        <th>Type</th>
+                        <th>Location</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                <% @board2.each do |board| %>
+                    <tr>
+                    <td> <%=board.name %></td>
+                    <td> <%=board.company_name %></td>
+                    <td> <%=board.status %></td>
+                    <td> <%=board.price %></td>
+                    <td> <%=board.screen_size %></td>
+                    <td> <%=board.viewership_count %></td>
+                    <td> <%=board.tpye %></td>
+                    <td> <%=board.location %></td>
+                    <td>
+                    <%= link_to "Edit", edit_showboard_path(board.id),class: "btn btn-primary btn-user"%>
+                    <% if board.status != "booked" %>
+                        <%= button_to "Delete", showboard_path(board.id) , method: :delete,form: { data: {confirm: "Are you sure?" } } , class: "btn btn-danger btn-user" %></td>
+                    <% else %>
+                        <div></div>
+                    <% end %>
+                    
+                    
+                    </tr>
+                        <%end%>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+</div>
+        
+    </div>
+
+
+</body>
+
+

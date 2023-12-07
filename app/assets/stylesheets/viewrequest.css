@@ -1,0 +1,49 @@
+.item-viewrequest {
+    height: 100%;
+    background-color: rgb(153, 216, 221);
+    width: 80%;
+    overflow: hidden;
+    display: block;
+    /* justify-content: center; */
+    /* align-items: center; */
+}
+
+.t {
+    width: 50wh;
+}
+
+.item-data-openrequest {
+    height: 100%;
+    background-color: rgb(153, 216, 221);
+    width: 100%;
+    overflow: hidden;
+    /* display: flex; */
+    justify-content: center;
+    /* align-items: center; */
+}
+
+.card-profile {
+    margin-left: 2%;
+    /* margin-right: 20%; */
+    width: 80%;
+    height: 100%;
+}
+
+.card {
+    margin-left: 2%;
+    /* margin-right: 20%; */
+    width: 80%;
+    height: 100%;
+}
+
+.payment-info {
+    height: 100%;
+    width: 50%;
+    border: 1px solid black;
+}
+
+.payment-slip {
+    height: 100%;
+    width: 50%;
+    border: 1px solid red;
+}

@@ -1,0 +1,86 @@
+
+  <div class="tnavbar">
+  <div class="tlogo">
+      <%= image_tag('1.png', :class => "logoimg") %>
+      <h3 class="title"> Out of Home</h3>
+  </div>
+  
+  <div>
+  <% if @user %>
+    <%= button_to "Logout" , logout_path,method: :delete %>
+<% end %>  
+  </div>
+</div>
+  
+  
+<div class="dash-content">
+    <div class="sidebar">
+        <div class="company-name"><h3>
+        <% if @user %>
+            <%= @user.company_name %>
+        <% end %> 
+
+        </h3></div>
+        <div class='item'>Profile</div>
+        <div class='item'>Book Billboard</div>
+        <div class='item'><b>Requests</b></div>
+        <div class='item'>Booked Billboards</div>
+    </div>
+
+    <div class='item-data-openrequest'>
+        <div class="col-md-9 offset-md-3 payment-card">
+                    <span class="anchor" id="formPayment"></span>
+                    
+                    <%# <hr class="my-5"> %>
+
+                    <!-- form card cc payment -->
+                    <div class="card card-outline-secondary">
+                        <div class="card-body">
+                            <h3 class="text-center">Your Bill</h3>
+                            <hr>
+
+                                
+                        <div class="container-fluid">
+                            <table id="productSizes" class="table">
+
+                                <tbody>
+                                    <tr class="d-flex">
+                                        <td class="col-5"><b>Payabale Amount</b></td>
+                                        <td class="col-7"><%=@booking_detail.first.total_bill%> PKR</td>
+                                    </tr>
+                                    <tr class="d-flex">
+                                        <td class="col-5"><b>Owner Bank</b></td>
+                                        <td class="col-7"><%=@owner_bank_details.first.bank%></td>
+                                    </tr>
+                         
+                                    <tr class="d-flex">
+                                        <td class="col-5"><b>Owner Account Name</b></td>
+                                        <td class="col-7"><%=@owner_bank_details.first.acc_name%></td>
+                                    </tr>
+                                    <tr class="d-flex">
+                                        <td class="col-5"><b>Owner Account Number</b></td>
+                                        <td class="col-7"><%=@owner_bank_details.first.acc_number%></td>
+                                    </tr>
+
+                                   
+                                    <tr class="d-flex">
+
+                                        <td class="col-3"></td>
+
+                                        <td class="col-6"><%= link_to "OK",pending_path ,class:"btn btn-primary next" %></td>
+
+                                        <td class="col-3"></td>
+                                    
+                                    </tr>
+
+                                </tbody>
+                            </table>
+                            
+                        </div>
+
+                        </div>
+                    </div>
+
+    
+    </div>    
+</div>

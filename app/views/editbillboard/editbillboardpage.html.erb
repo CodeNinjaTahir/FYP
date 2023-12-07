@@ -1,0 +1,71 @@
+
+  <div class="tnavbar">
+  <div class="tlogo">
+      <%= image_tag('1.png', :class => "logoimg") %>
+      <h3 class="title"> Out of Home</h3>
+  </div>
+  
+  <div>
+  <% if @user %>
+    <%= button_to "Logout" , logout_path,method: :delete %>
+<% end %>  
+  </div>
+</div>
+  
+  
+<div class="dash-content">
+    <div class="sidebar">
+        <div class="company-name"><h3>
+        
+        <% if @user %>
+            <%= @user.company_name %>
+        <% end %> 
+
+        </h3></div>
+        <div class='item'>Profile</div>
+        <div class='item'>Add BillBoard</div>
+        <div class='item'>Manage BillBoard</div>
+        <div class='item'>Payment Details</div>
+        <div class='item'>Book Request</div>
+        <div class='item'>Booked BillBoards</div>
+    </div>
+    <div class='item-data'>
+            
+        <div class="addform">
+        
+            <%= form_with  do |form| %>
+                <div class="add-input-field">
+                <h1 style="margin-left:30%">Update Billboard Details</h1>
+                </div>
+
+                <div class="add-input-field">
+                <%= form.text_field :name ,class: "add", placeholder:"billboard Name" %>
+                <%= form.text_field :company_name ,class: "add", placeholder:"Company Name" %>
+                </div>
+                <div class="add-input-field">
+                <%= form.text_field :location ,class: "add", placeholder:"Location" %>
+                <%= form.text_field :screen_size ,class: "add", placeholder:"Screen Size" %>
+                </div>
+                <div class="add-input-field">
+                <%= form.text_field :price ,class: "add", placeholder:"Price" %>
+                <%= form.text_field :status ,class: "add", placeholder:"Status" %>
+                </div>
+                <div class="add-input-field">
+                <%= form.text_field :tpye ,class: "add", placeholder:"Type" %>
+                <%= form.text_field :viewership_count ,class: "add", placeholder:"Viewership count" %>
+                </div>
+              
+                <div class="add-input-field">
+                <%= form.submit "Cancel" ,class: " btn btn-primary add"%>
+                <%= form.submit "Add Billboard",class: " btn btn-primary add"%>
+                
+                </div>
+
+
+            <% end %>
+        </div>
+    
+    
+    
+    </div>
+</div>

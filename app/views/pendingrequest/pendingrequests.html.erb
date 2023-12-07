@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Page Title</title>
+</head>
+
+
+<body>
+  <div class="tnavbar">
+  <div class="tlogo">
+      <%= image_tag('1.png', :class => "logoimg") %>
+      <h3 class="title"> Out of Home</h3>
+  </div>
+  
+  <div>
+  <% if @user %>
+    <%= button_to "Logout" , logout_path,method: :delete %>
+<% end %>  
+  </div>
+</div>
+  
+  
+<div class="dash-content">
+    <div class="sidebar">
+    
+<div><h3 style="margin:40px">Pepsi</h3></div>
+
+        
+        <div class='item'>Profile</div>
+        <div class='item'>View All Billboads</div>
+        
+    </div>
+    
+    <div class='item-data'>
+    <div class='show_billboard'>
+        <div class="container-lg">
+        <div class="table-responsive">
+        <div class="table-wrapper">
+        <div class="table-title">
+            <div class="row">
+                <div class="col-sm-8"><h2><b>Pending Requests</b></h2></div>
+                <div class="col-sm-4">
+
+                </div>
+                </div>
+            </div>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Billboard</th>
+                        <th>Company</th>
+                        <th>Content Status</th>
+                        <th>Payment</th>
+                        <th>Payment Status</th>
+                        <th>Feedback</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                
+                    <tr>
+                    <td>Giga Mall 1</td>
+                    <td>Sign Pakistan</td>
+                    <td>
+                        <div id="pending">
+                            <p style="color:blue;">pending...</p>
+                        </div>
+                        <div id="approved">
+                        <p style="color:green;">Approved</p>
+                        </div>
+                    </td>
+                    <td>
+                        <%= link_to "Upload Details", pay_path(),class:" btn btn-primary"%>
+                    </td>
+                    <td>
+
+                    </td>
+                    <td></td>
+
+
+                    
+                    </tr>
+                       
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+</div>
+
+
+</div>
+
+
+</body>
+<script type="module">
+let vari = document.getElementById("approved");
+console.log(vari);
+vari.style.display = "none";
+
+</script>
+</html>

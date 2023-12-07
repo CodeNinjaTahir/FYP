@@ -1,0 +1,66 @@
+
+
+
+
+  <body style = "background-color:rgb(153, 216, 221)">
+
+  <div class="tnavbar">
+  <div class="tlogo">
+      <%= image_tag('1.png', :class => "logoimg") %>
+      <h3 class="title"> Out of Home</h3>
+  </div>
+
+  <div>
+     
+      <%= link_to "Home", root_path, class:"home-btn"%> 
+      <%= link_to "Signup", register_path, class:"home-btn"%> 
+  </div>
+</div>
+  
+  
+  
+  <div class="container-fluid set">
+    <div class="row loginpagerow">
+    <div class="col-1">
+    </div>
+    <div class="logincol col-5 imagebox">
+
+    <h1 class="headinglogin">Bringing you the best of the best.</h1>
+    <%= image_tag('loginpageimage.png', :class => "img") %>
+
+    </div>
+
+
+    <div class="col-1">
+    </div>
+
+    <div class="col-4 logincol loginbox">
+        <h1 class="Login-here">Login Here</h1>
+      <div class="login-form">
+        <%= form_with model:@owner,url:login_path do |form|%>
+          <% flash.each do |type, msg| %>
+            <div class="alert alert-info">
+              <%= msg %>
+            </div>
+          <% end %>
+          <div class="mb-3 login-input">
+          <%= form.label:email %>
+          <%= form.text_field :email ,class: "form-control login-email-field", placeholder:"xyz@gmail.com" %>
+          </div>
+          <div class="mb-3 login-input">
+          <%= form.label:password %>
+          <%= form.password_field :password ,class: "form-control", placeholder:"Enter Password" %>
+          </div>
+          <a class="forgot-password" href="#">Forgot Password</a>
+          <div class="mb-3 login-input">
+             <%= form.submit "Login" ,class: "login-btn btn btn-primary"%>
+          </div>
+        <% end %>
+      </div>
+       </div>
+    <div class="col-1">
+</div>
+  </div>
+</div>
+
+  </body>

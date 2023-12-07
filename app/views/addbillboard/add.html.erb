@@ -1,0 +1,70 @@
+
+  <div class="tnavbar">
+  <div class="tlogo">
+      <%= image_tag('1.png', :class => "logoimg") %>
+      <h3 class="title"> Out of Home</h3>
+  </div>
+  
+
+</div>
+  
+  
+<div class="dash-content">
+    <div class="sidebar">
+        <div class="company-name"><h3>
+        
+        <% if @user %>
+            <%= @user.company_name %>
+        <% end %> 
+
+        </h3></div>
+        <div class='item'>Profile</div>
+        <div class='item'><b>Add BillBoard</b></div>
+        <div class='item'>Manage BillBoard</div>
+        <div class='item'>Booking Requests</div>
+        <div class='item'>Booked BillBoards</div>
+        <div class='item'>Payment Details</div>
+    </div>
+    <div class='item-data'>
+            
+        <div class="addform">
+        
+            <%= form_with  do |form| %>
+                <div class="add-input-field">
+                <h1 style="margin-left:30%">Add New Billboard</h1>
+                </div>
+
+                <div class="add-input-field">
+                <%= form.text_field :name ,class: "add", placeholder:"billboard Name",required:true%>
+                <%= form.text_field :location ,class: "add", placeholder:"Location",required:true %>
+                <%= form.hidden_field :company_name ,value:(@user.company_name if @user) %>
+                <%= form.hidden_field :owner_id ,value:(@user.id if @user) %>
+                <%= form.hidden_field :status ,:value=>"Available" %>
+                </div>
+                <div class="add-input-field">
+                <%= form.text_field :screen_size ,class: "add", placeholder:"Screen Size (60x30)",required:true %>
+                <%= form.select :tpye, ['OOH', 'DOOH'],{ include_blank: "Select Type" },class: "add",required:true%>
+                </div>
+                <div class="add-input-field">
+                <%= form.text_field :price ,class: "add", placeholder:"Price",required:true %>
+                <%= form.text_field :viewership_count ,class: "add", placeholder:"Viewership count",required:true %>
+                </div>
+
+                <div class="add-input-field">
+                <%= form.file_field :image ,class: "add" %>
+                </div>
+                
+                <div class="add-input-field">
+                <%= link_to "Cancel", owner_path ,class: " btn btn-primary add" %>  
+                <%= form.submit "Add Billboard",class: " btn btn-primary add"%>
+                 
+                </div>
+
+
+            <% end %>
+        </div>
+    
+    
+    
+    </div>
+</div>

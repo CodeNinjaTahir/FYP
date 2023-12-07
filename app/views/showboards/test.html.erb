@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Bootstrap Table with Add and Delete Row Feature</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round|Open+Sans">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+
+
+</head>
+<body>
+     
+</body>
+</html>
+
+<table>
+        <tr>
+            
+            <thread>
+            <th>Company</th>
+            <th>Name</th>
+            <th>price</th>
+            <th>type</th>
+            <th>status</th>
+            <th>viewership_count</th>
+            <th>location</th>
+            # <th>image</th>
+            </thread>
+        </tr>
+                <% @board.each do |board| %>
+            <tr>
+            <td> <%=board.name %></td>
+            <td> <%=board.company_name %></td>
+            <td> <%=board.price %></td>
+            <td> <%=board.tpye %></td>
+            <td> <%=board.status %></td>
+            <td> <%=board.viewership_count %></td>
+            <td> <%=board.location %></td>
+            # <%if board.image.present?%>
+                # <td><%=  image_tag(board.image, :size => "80x60")%></td>
+            # <%end%>     
+            </tr>
+                <%end%>
+        </table> 
+
+
+<button type="button" class="btn btn-info add-new"><i class="fa fa-plus"></i> Add New</button>
+
+
+
+<%= link_to 'Destroy', showboard_path(board.id),data: {:confirm => 'Are you sure?'}, :method => :delete %>
+</td>
+
+
+
+
+
+
+
+$.ajax({
+    method: 'PUT',
+    url: '/showboards/update_billboard',
+    data: { name: name, company_name: company, screen_size:screen_size, location:location, price:price, status:status, viewership_count:viewership_count},
+    dataType: 'html',
+    success: function(data){
+     popup.style.display = 'block';
+     $("#popup").empty();
+     $("#popup").append(data);
+     $("#darkness").addClass("darkness");
+    },
+    error: function(response) {
+      console.log("error")
+    }
+ });
+
+
+ get '/editbillboard/:id/edit' => 'editbillboard#edit', :as => :edit
+
+
+ <%= link_to "Cancel", :back%>
+
+
+
+
+
+
+
+
+
+
+ data: { turbo_confirm: "Are you sure you want to delete #{ board.id } Board?" }
+
+
+
+
+
+ puts(params[:password], params[:email])
+        if params[:email] == 'test@example.com' && params[:password] == 'test'
+            redirect_to client_path
+
+            
+
+
+
+            , data: {confirm: 'Are you sure to proceed?', verify: 'Foo', verify_text: 'Type "Foo" to confirm'} ,
+
+
+
+
+            onClick="display(<%= @board.price %>)
+
+
+            # <div "margin-left: 20px;">
+            # <%=image_tag(@board.image,width:"700px",height:"700px")%>
+            # </div>  
+
+
+
+            <div class="book-fields" > <%= link_to "Next", pendingrequest_path,method: :post , class:" btn btn-primary next"%></div>
+
+
+
+
+
+
+                    
+
+        <td>
+            
+            <%=requested.payment_approved%>
+        </td>
+
+
+
+        <%if @request_detail.video.attached?%>
+            <% if @request_detail.video.content_type.include('mp4') %>
+            <div style="width:400px; height:300px;">
+            <%=video_tag url_for(@request_detail.video),style:"width:400px; height:300px;",controls: true%>
+            </div>
+            <% else %>
+            <%=image_tag url_for(@request_detail.video)%>
+            <%end%>
+        <%end%>
+
+
+        <video controls width="480" height="200">
+                                    <source src="<%=rails_blob_url(@request_detail.video)%>" type="<%= @request_detail.content_type%>"/>
+                                    </video>
+
+
+
+
+
+
+            

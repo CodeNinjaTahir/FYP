@@ -1,0 +1,15 @@
+.item-data-viewbillboards {
+    height: 100%;
+    background-color: rgb(153, 216, 221);
+    width: 100%;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-left: 15%;
+    padding-top: 5%;
+}
+
+thead input {
+    width: 100%;
+}

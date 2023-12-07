@@ -1,0 +1,93 @@
+
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"></script>
+
+
+</head>
+
+<body>
+
+  <div class="tnavbar">
+  <div class="tlogo">
+      <%= image_tag('1.png', :class => "logoimg") %>
+      <h3 class="title"> Out of Home</h3>
+  </div>
+  
+  <div>
+  <% if @user %>
+    <%= button_to "Logout" , logout_path,method: :delete %>
+<% end %>  
+  </div>
+</div>
+  
+  
+<div class="dash-content">
+    <div class="sidebar">
+        <div class="company-name"><h3>
+        <% if @user %>
+            <%= @user.company_name %>
+        <% end %> 
+
+        </h3></div>
+        <%= link_to "Profile", edit_clientprofile_path(@user), class:"item2"%>
+        <%= link_to "Book BillBoard", viewbillboards_path, class:"item2"%>
+        <%= link_to "Requests", pending_path, class:"item2"%>
+        <%= link_to "Booked Billboards", clientbooked_path, class:"item2"%>
+    </div>
+
+
+    <div class='item-data'>
+    <div class='item-data-profile'>
+
+
+    <div class="card-profile">
+        <div class="info"> <span>Edit form</span> <button id="savebutton">edit</button> </div>
+        <div class="forms">
+            <div class="inputs"> <span>UserName</span> <input id="name" type="text" readonly value="Manage BillBoards"> </div>
+            <div class="inputs"> <span>CompanyName</span> <input type="text" id="cname" readonly value="Doe"> </div>
+            <div class="inputs"> <span>Contact</span> <input type="text" id="contact" readonly value="john.doe12@gmail.com"> </div>
+            <div class="inputs"> <span>Address</span> <input type="text" id="address" readonly value="johndoe12"> </div>
+        </div>
+        </div>
+    </div>
+
+</div>
+</div>
+<script>
+
+var savebutton = document.getElementById('savebutton');
+var readonly = true;
+var inputs = document.querySelectorAll('input[type="text"]');
+
+savebutton.addEventListener('click',function(){
+
+    
+for (var i=0; i<inputs.length; i++) 
+    { inputs[i].toggleAttribute('readonly'); };
+     if (savebutton.innerHTML=="edit" ) 
+        { savebutton.innerHTML="save" ;
+        }
+ else { savebutton.innerHTML="edit" ;
+    
+    var name=document.getElementById('name').value;
+    var cname=document.getElementById('cname').value;
+    var contact=document.getElementById('contact').value;
+    var address=document.getElementById('address').value;
+    $.post("ownerprofile",
+        {
+            username: name,
+            company_name: cname,
+            contact:contact,
+            address:address
+        });   
+}     
+    });
+    
+    
+   
+</script>
+</body>

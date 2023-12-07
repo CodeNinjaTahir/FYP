@@ -1,0 +1,103 @@
+
+  <div class="tnavbar">
+  <div class="tlogo">
+      <%= image_tag('1.png', :class => "logoimg") %>
+      <h3 class="title"> Out of Home</h3>
+  </div>
+  
+  <div>
+  <% if @user %>
+    <%= button_to "Logout" , logout_path,method: :delete %>
+<% end %>  
+  </div>
+</div>
+  
+  
+<div class="dash-content">
+    <div class="sidebar">
+        <div class="company-name"><h3>
+        <% if @user %>
+            <%= @user.company_name %>
+        <% end %> 
+
+        </h3></div>
+        <%# <%= link_to "Profile", edit_ownerprofile_path(@user.id), class:"item2"%> %>
+        
+        <%# <%= link_to "Add BillBoard", addbillboard_path, class:"item2"%> %>
+        <%# <%= link_to "Manage BillBoards", showboards_path, class:"item2"%> %>
+        <div class='item'>Payment Details</div>
+        <div class='item'>Booking Request</div>
+        <div class='item'>Booked BillBoards</div>
+    </div>
+
+    <div class='item-data-openrequest'>
+        <div class="col-md-9 offset-md-3 payment-card">
+                    <span class="anchor" id="formPayment"></span>
+                    
+                    <%# <hr class="my-5"> %>
+
+                    <!-- form card cc payment -->
+                    <div class="card card-outline-secondary">
+                        <div class="card-body">
+                            <h3 class="text-center">Payment Request</h3>
+                            <hr>
+
+                                
+                        <div class="container-fluid">
+                            <table id="productSizes" class="table">
+
+                                <tbody>
+                                    <tr class="d-flex">
+                                        <td class="col-5"><b>Bank Name</b></td>
+                                        <td class="col-7"><%=@payment_detail.first.bank_name%></td>
+                                    </tr>
+                                    <tr class="d-flex">
+                                        <td class="col-5"><b>Account Name</b></td>
+                                        <td class="col-7"><%=@payment_detail.first.account_name%></td>
+                                    </tr>
+                         
+                                    <tr class="d-flex">
+                                        <td class="col-5"><b>Account Number</b></td>
+                                        <td class="col-7"><%=@payment_detail.first.account_number%></td>
+                              
+                                    </tr>
+                                    <tr class="d-flex">
+                                        <td class="col-5"><b>Payment Date</b></td>
+                                        <td class="col-7"><%=@payment_detail.first.payment_date%></td>
+                                    </tr>
+                                    <tr class="d-flex">
+                                        <td class="col-5"><b>Payable Amount</b></td>
+                                        <td class="col-7"><%=@booking.total_bill%></td>
+                                    </tr>
+                                    <tr class="d-flex">
+                                        <td class="col-5"><b>Paid Amount</b></td>
+                                        <td class="col-7"><%=@payment_detail.first.amount%></td>
+                                    </tr>
+                                    <tr class="d-flex">
+                                        <td class="col-5"><b>Payment Slip</b></td>
+                                        <td class="col-7"><%=image_tag(@payment_detail.first.payment_slip,width:"400px",height:"300px")%></td>
+                                    </tr>
+
+                                   
+                                    <tr class="d-flex">
+
+                                        
+
+                                        <td class="col-6"><%= link_to "Reject" ,{:action => "rejectpayment",  :id=>@booking.id},class:"btn btn-danger next" %></td>
+
+                                        <td class="col-6"><%= link_to "Approve" ,{:action => "approvepayment",  :id=>@booking.id},class:"btn btn-primary next" %></td>
+
+                                    
+                                    </tr>
+
+                                </tbody>
+                            </table>
+                            
+                        </div>
+
+                        </div>
+                    </div>
+
+    
+    </div>    
+</div>

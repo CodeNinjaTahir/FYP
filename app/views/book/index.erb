@@ -1,0 +1,122 @@
+
+<head>
+<script>
+function display(price) {
+  const _MS_PER_DAY = 1000 * 60 * 60 * 24;
+  var date = new Date(document.getElementById('startdate').value);
+  var date2 = new Date(document.getElementById('enddate').value);
+  const utc1 = Date.UTC(date.getFullYear(), date.getMonth(), date.getDate());
+  const utc2 = Date.UTC(date2.getFullYear(), date2.getMonth(), date2.getDate());
+  var b_id = <%= @board.id%>;
+  var u_id = <%= @user.id%>;
+  const diff=Math.floor((utc2 - utc1) / _MS_PER_DAY);
+  price=<%= @board.price%>;
+  var bill=diff*price;
+  if (diff>=1){
+    if(confirm("Your Total bill of booking is : "+diff*price+ "\nDo You want to Continue ..?"))
+      {
+        $.post("pendingrequest/create",
+          {
+              client_id:u_id,
+              board_id:b_id,
+              start_date:date,
+              end_date:date2,
+              total_bill:bill
+              content_approved:'0'
+              payment_approved:'0'
+          });   
+
+      }
+    else
+      { 
+
+      }
+  }
+else{
+  alert("Invalid selected Dates");
+  return false;
+}
+
+}
+var date = new Date();
+var today = new Date(date.getFullYear(), date.getMonth(), date.getDate());
+
+$('#startdate').datepicker({ 
+    minDate: today
+});
+</script>
+</head>
+
+
+<body>
+  <div class="tnavbar">
+  <div class="tlogo">
+      <%= image_tag('1.png', :class => "logoimg") %>
+      <h3 class="title"> Out of Home</h3>
+  </div>
+  <% if @board %>
+    <%= @board.id%>
+<% end %> 
+  <div>
+  <% if @user %>
+    <%= button_to "Logout" , logout_path,method: :delete %>
+<% end %>  
+  </div>
+</div>
+  
+
+
+
+  
+<div class="dash-content">
+    <div class="book-sidebar">
+        
+            <%= form_with do |form|%>
+
+            <div class="book-fields"><h3>Book Billboard</h3></div>
+
+            <div class="book-fields"><%= form.label :Name, "Name" %>
+            <%= form.text_field :input , {:class => 'book-input',:readonly => true, value:(@board.name if @board)} %>
+            </div>
+
+            <div class="book-fields"><%= form.label :Company_name, "Company" %>
+            <%= form.text_field :input , {:class => 'book-input',:readonly => true, value:(@board.company_name if @board)} %>
+            </div>
+
+            <div class="book-fields"><%= form.label :Screen_size, "Size" %>
+            <%= form.text_field :input , {:class => 'book-input',:readonly => true, value:(@board.screen_size if @board)} %>
+            </div>
+
+            <div class="book-fields"><%= form.label :Location, "Location" %>
+            <%= form.text_field :input , {:class => 'book-input',:readonly => true, value:(@board.location if @board)} %>
+            </div>
+
+            <div class="book-fields"><%= form.label :start_date, "Start Date" %>
+              <%= form.date_field :startdate, "data-provide" => 'datepicker', :class=>'book-input' %></div>
+
+            <div class="book-fields"><%= form.label :end_date, "End Date : " %>
+              <%= form.date_field :enddate, "data-provide" => 'datepicker', :class=>'book-input' %></div>
+           
+            <div class="book-fields">
+            <p><b>Upload Content : </b>Vedio/Image</p>
+            <%= form.file_field :video, accept: "image/png,image/jpeg,.mp4", class:"upload-icon"%>
+            </div>
+
+            <div class="book-fields" > <%= link_to "Next", pendingrequest_path,method: :post , class:" btn btn-primary next"%></div>
+           
+            <%end%>
+        
+    </div>
+    
+          
+    
+    <div class='item-data'></div>
+     
+   
+</div>
+
+
+
+
+
+</body>
